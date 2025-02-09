@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>Listas de Reproducción</h2>
+
+  <div *ngIf="trackLists.length === 0" class="empty-message">
+    <p>No hay listas de reproducción disponibles.</p>
+  </div>
+
+  <div *ngFor="let track of trackLists" class="tracklist-card">
+    <div class="tracklist-header">
+      <h3>{{ track.nombre }}</h3>
+      <button class="delete-button" (click)="deleteTrackList(track)">
+        🗑️
+      </button>
+    </div>
+    <p *ngIf="track.descripcion">Descripción: {{ track.descripcion }}</p>
+
+    <h4>Canciones:</h4>
+    <table *ngIf="track.canciones.length > 0; else noSongs">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Artista</th>
+          <th>Álbum</th>
+          <th>Año</th>
+          <th>Género</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let song of track.canciones">
+          <td>{{ song.titulo || 'Sin título' }}</td>
+          <td>{{ song.artista || 'Desconocido' }}</td>
+          <td>{{ song.album || 'Sin álbum' }}</td>
+          <td>{{ song.anno || 'Sin año' }}</td>
+          <td>{{ song.genero || 'Sin género' }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #noSongs>
+      <p class="no-songs">No hay canciones en esta lista.</p>
+    </ng-template>
+  </div>
+</div>
