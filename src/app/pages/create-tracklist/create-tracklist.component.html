@@ -1,0 +1,27 @@
+<div class="tracklist-container">
+  <h2>Crear Lista de Reproducción</h2>
+  
+  <form (submit)="createTrackList(); $event.preventDefault()">
+    <input type="text" placeholder="Nombre de la lista" [(ngModel)]="name" name="name" required>
+    <textarea placeholder="Descripción" [(ngModel)]="description" name="description"></textarea>
+
+    <h3>Añadir Canciones</h3>
+    <div class="song-input">
+      <input type="text" placeholder="Título" [(ngModel)]="newSong.titulo" name="titulo">
+      <input type="text" placeholder="Artista" [(ngModel)]="newSong.artista" name="artista">
+      <input type="text" placeholder="Álbum" [(ngModel)]="newSong.album" name="album">
+      <input type="text" placeholder="Año" [(ngModel)]="newSong.anno" name="anno">
+      <input type="text" placeholder="Género" [(ngModel)]="newSong.genero" name="genero">
+      <button type="button" (click)="addSong()">Añadir</button>
+    </div>
+
+    <ul class="song-list">
+      <li *ngFor="let song of canciones">
+        {{ song.titulo }} - {{ song.artista }} ({{ song.album }}, {{ song.anno }}, {{ song.genero }})
+        <button type="button" class="delete-btn" (click)="removeSong(song)">X</button>
+      </li>
+    </ul>
+
+    <button type="submit">Guardar Lista</button>
+  </form>
+</div>
