@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,7 @@ export class RegisterComponent {
 
     const body = { email: this.email, password: this.password, role: 'user' };
 
-    this.http.post('http://localhost:8080/api/v1/users/register', body).subscribe({
+    this.http.post(`${environment.apiUrl}users/register`, body).subscribe({
       next: () => {
         alert('Registro exitoso. Ahora puedes iniciar sesión.');
         this.router.navigate(['/login']);

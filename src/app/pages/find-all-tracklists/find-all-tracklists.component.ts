@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgFor, NgIf } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-find-all-tracklists',
@@ -12,7 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class FindAllTrackListsComponent implements OnInit {
   trackLists: any[] = [];
-  apiUrl = 'http://localhost:8080/api/v1/lists';
+  apiUrl = `${environment.apiUrl}lists`;
 
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-create-tracklist',
@@ -17,7 +18,7 @@ export class CreateTrackListComponent {
   description: string | null = null;
   newSong = { titulo: null, artista: null, album: null, anno: null, genero: null };
   canciones: any[] = [];
-  apiUrl = 'http://localhost:8080/api/v1/lists';
+  apiUrl = `${environment.apiUrl}lists`;
 
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
