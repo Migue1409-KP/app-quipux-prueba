@@ -1,59 +1,104 @@
-# Pruebatecnicafront
+# Prueba Técnica - Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
+Este es el proyecto frontend para la prueba técnica, desarrollado en **Angular 19**. Su objetivo principal es consumir la API desarrollada en el backend y demostrar la capacidad de integración entre ambos sistemas.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Tecnologías Utilizadas
 
-```bash
-ng serve
+- **Framework:** Angular 19
+- **CLI:** Angular CLI 19.1.6
+- **Lenguaje:** TypeScript 5.7.2
+- **Manejo de Cookies:** ngx-cookie-service
+- **Estilos:** CSS básico
+- **HTTP Requests:** HttpClient de Angular
+- **Módulo de Rutas:** Angular Router
+
+---
+
+## 📌 Requisitos Previos
+
+Antes de ejecutar este proyecto, asegúrate de tener instalado:
+
+- **Node.js** (versión recomendada: 18.x o superior)
+- **Angular CLI** (`npm install -g @angular/cli`)
+- **Backend corriendo en el puerto `8080`**
+
+---
+
+## ⚙️ Instalación y Ejecución
+
+### 1️⃣ Clonar el Repositorio
+```sh
+ git clone https://github.com/usuario/pruebatecnicafront.git
+ cd pruebatecnicafront
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+### 2️⃣ Instalar Dependencias
+```sh
+ npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
+### 3️⃣ Ejecutar el Proyecto
+```sh
+ ng serve
 ```
+> Esto iniciará el servidor en `http://localhost:4200/`.
 
-## Building
+### 4️⃣ **¡Importante!** Backend en Ejecución
+Para que el frontend funcione correctamente, asegúrate de tener **el backend corriendo en el puerto `8080`**.
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## 🌍 Rutas de la Aplicación
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+El frontend cuenta con las siguientes rutas:
 
-## Running unit tests
+| Ruta                  | Componente                | Descripción |
+|-----------------------|--------------------------|-------------|
+| `/`                   | Redirección a `/login`   | Página de inicio redirige al login |
+| `/login`              | LoginComponent           | Formulario de inicio de sesión |
+| `/register`           | RegisterComponent        | Registro de usuario |
+| `/create-tracklist`   | CreateTrackListComponent | Creación de listas de reproducción |
+| `/find-all-tracklists` | FindAllTrackListsComponent | Visualización y eliminación de listas |
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+## 🎨 Estilo y Diseño
 
-## Running end-to-end tests
+> **⚠️ Nota:** Este frontend tiene un diseño **muy básico**, ya que su propósito es demostrar la capacidad de consumo del backend, **no evaluar habilidades en diseño UI/UX**.
 
-For end-to-end (e2e) testing, run:
+Las interfaces contienen formularios simples y tablas para visualizar los datos devueltos por el backend. Se ha priorizado la funcionalidad sobre la apariencia.
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🔑 Autenticación y Seguridad
 
-## Additional Resources
+- **Inicio de Sesión:** Se requiere un usuario registrado para acceder a los endpoints protegidos.
+- **Manejo de Tokens:**
+  - Al iniciar sesión, el token JWT se almacena en **cookies**.
+  - Se usa `ngx-cookie-service` para manejar las cookies.
+  - Todas las solicitudes a endpoints protegidos incluyen el token en el header `Authorization`.
+- **Endpoints Públicos:**
+  - `login` y `register` no requieren autenticación.
+- **Endpoints Protegidos:**
+  - `create-tracklist` y `find-all-tracklists` requieren autenticación.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## 📩 API Backend
+
+El frontend consume los siguientes endpoints del backend (`http://localhost:8080/api/v1/`):
+
+- **`POST /users/login`** → Inicia sesión y recibe un token.
+- **`POST /users/register`** → Crea un nuevo usuario.
+- **`POST /lists`** → Crea una nueva lista de reproducción.
+- **`GET /lists`** → Obtiene todas las listas de reproducción.
+- **`DELETE /lists/{nombre}`** → Elimina una lista (requiere token).
+
+---
+
+## 📌 Contacto
+
+Si tienes alguna duda o sugerencia, no dudes en contactarme.
+
